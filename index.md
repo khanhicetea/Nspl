@@ -236,6 +236,22 @@ $sum = pipe(
 );
 ```
 
+> **Tip**
+>
+> To make your code compact you can use short function aliases. For example:
+>  
+> ```php
+> use function \nspl\f\partial as p;
+> 
+> $sum = pipe(
+>    range(1, 20),
+>    p(filter, $isEven),
+>    p(map, $square),
+>    p(reduce, sum)
+> );
+> ```
+> Note, while sometimes it can improve readability by removing extra characters it also may confuse your team members
+
 ##### I($input, $function1, $function2)
 
 Alias for the pipe
@@ -435,7 +451,7 @@ assert([1, 2, 3] === filter('is_numeric', ['a', 1, 'b', 2, 'c', 3]));
 
 Returns sequence items that don't satisfy the predicate
 ```php
-assert(['a', 'b', 'c'] === filter('is_numeric', ['a', 1, 'b', 2, 'c', 3]));
+assert(['a', 'b', 'c'] === filterNot('is_numeric', ['a', 1, 'b', 2, 'c', 3]));
 ```
 
 ##### take($sequence, $N, $step = 1)
@@ -888,6 +904,11 @@ Roadmap
 =======
 
 - Add laziness in version 1.2
+
+Contributing
+============
+
+This project uses [semantic versioning](http://semver.org/) to tag releases. Please submit your pull requests to the latest release branch where the issue was introduced.
 
 Feedback
 ========
